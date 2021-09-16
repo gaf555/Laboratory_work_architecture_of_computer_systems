@@ -29,7 +29,7 @@
 | long double     | 8            | 16  |
 | long double*    | 4            | 8   |
 
-## Задача 2. Интерпретация области памяти, print16()
+## Задача 2 и 4. Интерпретация области памяти, print16() и print32()
 
 Реализации функции print16()
 
@@ -139,7 +139,40 @@ z ex  un 32
 
 ## Задача 3. Интерпретация области памяти, print32() и print64()
 
-## Задача 4. 
+Реализация функции print32()
+```C++
+void print32(void *p) {
+
+	std::cout << "Hex 32 bit unsigned reinterpret cast is " << std::hex << *(reinterpret_cast<unsigned int *>(p)) << std::endl;
+	std::cout << "Hex 32 bit signed reinterpret cast is " << std::hex << *(reinterpret_cast<int *>(p)) << std::endl;
+	
+	std::cout << "Dec 32 bit unsigned reinterpret cast is " << std::dec << *(reinterpret_cast<unsigned int *>(p)) << std::endl;
+	std::cout << "Dec 32 bit signed reinterpret cast is " << std::dec << *(reinterpret_cast<int *>(p)) << std::endl;
+
+	std::cout << std::endl;
+}
+```
+
+Реализация функции print64()
+```C++
+void print64(void *p) {
+
+	std::cout << "Hex 64 bit unsigned reinterpret cast is " << std::hex << *(reinterpret_cast<unsigned long long  *>(p)) << std::endl;
+	std::cout << "Hex 64 bit signed reinterpret cast is " << std::hex << *(reinterpret_cast<long long *>(p)) << std::endl;
+	
+	std::cout << "Dec 64 bit unsigned reinterpret cast is " << std::dec << *(reinterpret_cast<unsigned long long  *>(p)) << std::endl;
+	std::cout << "Dec 64 bit signed reinterpret cast is " << std::dec << *(reinterpret_cast<long long *>(p)) << std::endl;
+
+	std::cout << "Double 64 bit signed reinterpret cast is " << *(reinterpret_cast<double *>(p)) << std::endl;
+
+	std::cout << std::endl;
+}
+```
+
+Результат
+```
+Прива))0))))00))!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+```
 
 ## Задача 5. 
 
