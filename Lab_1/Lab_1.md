@@ -171,7 +171,96 @@ void print64(void *p) {
 
 Результат
 ```
-Прива))0))))00))!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Max unsigned 32 bit print32:
+Hex 32 bit unsigned reinterpret cast is ffffffff
+Hex 32 bit signed reinterpret cast is ffffffff
+Dec 32 bit unsigned reinterpret cast is 4294967295
+Dec 32 bit signed reinterpret cast is -1
+
+Min unsigned 32 bit print32:
+Hex 32 bit unsigned reinterpret cast is 0
+Hex 32 bit signed reinterpret cast is 0
+Dec 32 bit unsigned reinterpret cast is 0
+Dec 32 bit signed reinterpret cast is 0
+
+Max signed 32 bit print32:
+Hex 32 bit unsigned reinterpret cast is 7fffffff
+Hex 32 bit signed reinterpret cast is 7fffffff
+Dec 32 bit unsigned reinterpret cast is 2147483647
+Dec 32 bit signed reinterpret cast is 2147483647
+
+Min signed 32 bit print32:
+Hex 32 bit unsigned reinterpret cast is 80000000
+Hex 32 bit signed reinterpret cast is 80000000
+Dec 32 bit unsigned reinterpret cast is 2147483648
+Dec 32 bit signed reinterpret cast is -2147483648
+
+Max unsigned 64 bit print32:
+Hex 64 bit unsigned reinterpret cast is 80000000ffffffff
+Hex 64 bit signed reinterpret cast is 80000000ffffffff
+Dec 64 bit unsigned reinterpret cast is 9223372041149743103
+Dec 64 bit signed reinterpret cast is -9223372032559808513
+Double 64 bit signed reinterpret cast is -2.122e-314
+
+Min unsigned 64 bit print32:
+Hex 64 bit unsigned reinterpret cast is ffffffff00000000
+Hex 64 bit signed reinterpret cast is ffffffff00000000
+Dec 64 bit unsigned reinterpret cast is 18446744069414584320
+Dec 64 bit signed reinterpret cast is -4294967296
+Double 64 bit signed reinterpret cast is nan
+
+Max signed 64 bit print32:
+Hex 64 bit unsigned reinterpret cast is ffffffff
+Hex 64 bit signed reinterpret cast is ffffffff
+Dec 64 bit unsigned reinterpret cast is 4294967295
+Dec 64 bit signed reinterpret cast is 4294967295
+Double 64 bit signed reinterpret cast is 2.122e-314
+
+Min signed 64 bit print32:
+Hex 64 bit unsigned reinterpret cast is ffffffff00000000
+Hex 64 bit signed reinterpret cast is ffffffff00000000
+Dec 64 bit unsigned reinterpret cast is 18446744069414584320
+Dec 64 bit signed reinterpret cast is -4294967296
+Double 64 bit signed reinterpret cast is nan
+
+Print32 for x in int:
+Hex 32 bit unsigned reinterpret cast is a1b2c3d4
+Hex 32 bit signed reinterpret cast is a1b2c3d4
+Dec 32 bit unsigned reinterpret cast is 2712847316
+Dec 32 bit signed reinterpret cast is -1582119980
+
+Print32 for y in int:
+Hex 32 bit unsigned reinterpret cast is 3
+Hex 32 bit signed reinterpret cast is 3
+Dec 32 bit unsigned reinterpret cast is 3
+Dec 32 bit signed reinterpret cast is 3
+
+Print32 for z in int:
+Hex 32 bit unsigned reinterpret cast is fffffff8
+Hex 32 bit signed reinterpret cast is fffffff8
+Dec 32 bit unsigned reinterpret cast is 4294967288
+Dec 32 bit signed reinterpret cast is -8
+
+Print64 for x in long long:
+Hex 64 bit unsigned reinterpret cast is a1b2c3d4
+Hex 64 bit signed reinterpret cast is a1b2c3d4
+Dec 64 bit unsigned reinterpret cast is 2712847316
+Dec 64 bit signed reinterpret cast is 2712847316
+Double 64 bit signed reinterpret cast is 1.34032e-314
+
+Print64 for y in long long:
+Hex 64 bit unsigned reinterpret cast is 3
+Hex 64 bit signed reinterpret cast is 3
+Dec 64 bit unsigned reinterpret cast is 3
+Dec 64 bit signed reinterpret cast is 3
+Double 64 bit signed reinterpret cast is 1.4822e-323
+
+Print64 for z in long long:
+Hex 64 bit unsigned reinterpret cast is fffffffffffffff8
+Hex 64 bit signed reinterpret cast is fffffffffffffff8
+Dec 64 bit unsigned reinterpret cast is 18446744073709551608
+Dec 64 bit signed reinterpret cast is -8
+Double 64 bit signed reinterpret cast is nan
 ```
 
 ## Задача 5. 
