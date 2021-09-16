@@ -263,7 +263,26 @@ Dec 64 bit signed reinterpret cast is -8
 Double 64 bit signed reinterpret cast is nan
 ```
 
-## Задача 5. 
+## Задача 5. Изучение расположения байтов в памяти
+
+Реализация функции printDuno()
+```C++
+void printDump(void *p, size_t N) {
+
+	unsigned char* pbtP = (unsigned char*)(p);
+
+	for (int i = 0; i < N; i++) {
+
+		std::cout << (int)*(pbtP + i) << std::endl;
+	}
+	std::cout << std::endl;
+}
+```
+
+Результат
+```
+ЖЕНЁК, СЮДА ЖЕНЁК, СЮДА ЖЕНЁК, СЮДА ЖЕНЁК, СЮДА ЖЕНЁК, СЮДА ЖЕНЁК, СЮДА ЖЕНЁК, СЮДА ЖЕНЁК, СЮДА ЖЕНЁК, СЮДА 
+```
 
 ## Контрольные вопросы
 
