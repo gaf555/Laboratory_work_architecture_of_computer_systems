@@ -273,7 +273,7 @@ void printDump(void *p, size_t N) {
 
 	for (int i = 0; i < N; i++) {
 
-		std::cout << (int)*(pbtP + i) << std::endl;
+		std::cout << std::hex << (int)*(pbtP + i) << " ";
 	}
 	std::cout << std::endl;
 }
@@ -281,74 +281,20 @@ void printDump(void *p, size_t N) {
 
 Результат
 ```
+One in int:
+1 0 0 0
 x in int:
-212
-195
-178
-161
-
+d4 c3 b2 a1
 array[] in int:
-212
-195
-178
-161
-3
-0
-0
-0
-248
-255
-255
-255
-
+d4 c3 b2 a1 3 0 0 0 f8 ff ff ff
 str1c in char:
-98
-99
-100
-120
-121
-0
-
+62 63 64 78 79 0
 str2c in char:
-209
-145
-208
-182
-208
-183
-208
-184
-208
-185
-0
-
+b8 e6 e7 e8 e9 0
 str1wc in char:
-98
-0
-99
-0
-100
-0
-120
-0
-121
-0
-0
-0
-
+62 0 63 0 64 0 78 0 79 0 0 0
 str2wc in char:
-81
-4
-54
-4
-55
-4
-56
-4
-57
-4
-0
-0
+51 4 36 4 37 4 38 4 39 4 0 0
 ```
 
 ## Контрольные вопросы
