@@ -6,28 +6,28 @@
 
 ## Задача 1. Размеры типов данных, sizeof
 
-| Размер в байтах | Microsoft 64 | GCC |
-| --------------- | ------------ | --- |
-| char            | 1            | 1   |
-| signed char     | 1            | 1   |
-| unsigned char   | 1            | 1   |
-| char*           | 4            | 8   |
-| wchar_t         | 2            | 2   |
-| wchar_t*        | 4            | 8   |
-| short           | 2            | 2   |
-| short*          | 4            | 8   |
-| int             | 4            | 4   |
-| int*            | 4            | 8   |
-| long            | 4            | 4   |
-| long*           | 4            | 8   |
-| long long       | 8            | 8   |
-| long long*      | 4            | 8   |
-| float           | 4            | 4   |
-| float*          | 4            | 8   |
-| double          | 8            | 8   |
-| double*         | 4            | 8   |
-| long double     | 8            | 16  |
-| long double*    | 4            | 8   |
+| Размер в байтах | Microsoft 32 | Microsoft 64 | GCC 32 | GCC 64 | 
+| --------------- | ------------ | ------------ | -----  | ------ |
+| char            | 1            | 1            | 1      | 1      |
+| signed char     | 1            | 1            | 1      | 1      |
+| unsigned char   | 1            | 1            | 1      | 1      |
+| char*           | 4            | 8            | 8      | 8      |
+| wchar_t         | 2            | 2            | 2      | 4      |
+| wchar_t*        | 4            | 8            | 8      | 8      |
+| short           | 2            | 2            | 2      | 2      |
+| short*          | 4            | 8            | 8      | 8      |
+| int             | 4            | 4            | 4      | 4      |
+| int*            | 4            | 8            | 8      | 8      |
+| long            | 4            | 4            | 4      | 8      |
+| long*           | 4            | 8            | 8      | 8      |
+| long long       | 8            | 8            | 8      | 8      |
+| long long*      | 4            | 8            | 8      | 8      |
+| float           | 4            | 4            | 4      | 4      |
+| float*          | 4            | 8            | 8      | 8      |
+| double          | 8            | 8            | 8      | 8      |
+| double*         | 4            | 8            | 8      | 8      |
+| long double     | 8            | 8            | 16     | 16     |
+| long double*    | 4            | 8            | 8      | 8      |
 
 ## Задача 2 и 4. Интерпретация области памяти, print16() и print32()
 
