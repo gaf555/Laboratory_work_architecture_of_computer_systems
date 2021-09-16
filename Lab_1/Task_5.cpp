@@ -11,6 +11,11 @@ int main() {
 	int array[] = { x,y,z };
 	double dy = y;
 
+	int one = 1;
+
+	std::cout << "One in int:" << std::endl;
+	printDump(&one, sizeof(one));
+
 	char str1c[] = "bcdxy";
 	char str2c[] = "ёжзий";
 
@@ -28,7 +33,7 @@ int main() {
 
 	std::cout << "str2c in char:" << std::endl;
 	printDump(&str2c, sizeof(str2c));
-	
+
 	std::cout << "str1wc in char:" << std::endl;
 	printDump(&str1wc, sizeof(str1wc));
 
@@ -44,7 +49,7 @@ void printDump(void *p, size_t N) {
 
 	for (int i = 0; i < N; i++) {
 
-		std::cout << (int)*(pbtP + i) << std::endl;
+		std::cout << std::hex << (int)*(pbtP + i) << " ";
 	}
 	std::cout << std::endl;
 }
