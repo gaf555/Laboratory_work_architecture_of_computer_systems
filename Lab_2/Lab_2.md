@@ -14,13 +14,33 @@
 | 1       | result = f(x, y) = x + y + 177 |
 
 ### Вычисление
+
+#### Функция function()
 ```C++
-#include <iostream>
-#include <string>
-
 int function(int digit1, int digit2) { return digit1 + digit2 + 177; }
+```
+#### Функция main()
+```C++
+int main() {
 
-int safeIntCin(std::string msg) {
+    int x = 0;
+    int y = 0;
+    int result = 0;
+
+    x = SafeIntCin("Enter x: ");
+    y = SafeIntCin("Enter y: ");
+
+    result = function(x, y);
+
+    std::cout << "Result is " << result << std::endl;
+
+    return 0;
+}
+```
+
+#### Функция SafeIntCin
+```C++
+int SafeIntCin(std::string msg) {
 
     int x = 0;
 
@@ -43,22 +63,6 @@ int safeIntCin(std::string msg) {
     }
 
     return x;
-}
-
-int main() {
-
-    int x = 0;
-    int y = 0;
-    int result = 0;
-
-    x = safeIntCin("Enter x: ");
-    y = safeIntCin("Enter y: ");
-
-    result = function(x, y);
-
-    std::cout << "Result is " << result << std::endl;
-
-    return 0;
 }
 ```
 
