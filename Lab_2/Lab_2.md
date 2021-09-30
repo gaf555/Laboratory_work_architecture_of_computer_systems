@@ -89,5 +89,6 @@ int SafeIntCin(std::string msg) {
 ### Изменение регистра стека esp
 ![изображение](https://user-images.githubusercontent.com/78896451/134811613-0db4f450-5494-4fd3-9dcf-9603b40ad325.png)
 
-### Фрагмент дизассемблированного кода
-![изображение](https://user-images.githubusercontent.com/78896451/134171427-6745f24f-7f61-42e6-ba52-5c6efba988bb.png)
+### Фрагмент дизассемблированного кода (синтаксис AT&T)
+
+![image](https://user-images.githubusercontent.com/78896451/135437451-4735feaf-ae84-4124-a73e-e66c3a4840b7.png)
