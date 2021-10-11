@@ -2,9 +2,9 @@
 
 ## Навигация
 
-1. [Назад ()]()
+1. [Назад (Работа с условными командами)](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_6/Lab_6.md)
 2. [На главную](https://github.com/konsilerinos/ACS-labs)
-3. [Вперёд ()]()
+3. Вперёд
 
 ## Цель
 
