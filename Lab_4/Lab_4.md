@@ -2,9 +2,9 @@
 
 ## Навигация
 
-1. [Назад ()]()
+1. [Назад (Использование ассемблерных вставок на С++)](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Lab_3.md)
 2. [На главную](https://github.com/konsilerinos/ACS-labs)
-3. [Вперёд ()]()
+3. [Вперёд (Работа с числами с плавающей точкой)](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_5/Lab_5.md)
 
 ## Цель
 
