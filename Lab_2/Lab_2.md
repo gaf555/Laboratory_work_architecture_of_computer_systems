@@ -1,5 +1,11 @@
 # Лабораторная работа № 2. Отладка кода
 
+## Навигация
+
+1. [Назад (Представление данных в ЭВМ)](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_1/Lab_1.md)
+2. [На главную](https://github.com/konsilerinos/ACS-labs)
+3. [Вперёд (Использование ассемблерных вставок на С++)](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Lab_3.md)
+
 ## Цель
 
 Научиться использовать инструменты отладки
