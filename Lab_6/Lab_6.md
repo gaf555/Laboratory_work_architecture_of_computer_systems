@@ -2,9 +2,9 @@
 
 ## Навигация
 
-1. [Назад ()]()
+1. [Назад (Работа с числами с плавающей точкой)](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_5/Lab_5.md)
 2. [На главную](https://github.com/konsilerinos/ACS-labs)
-3. [Вперёд ()]()
+3. [Вперёд (Использования структур и массивов)](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_7/Lab_7.md)
 
 ## Цель
 
