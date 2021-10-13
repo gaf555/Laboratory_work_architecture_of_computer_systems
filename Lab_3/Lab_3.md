@@ -21,6 +21,9 @@
 | ------------ | ------------------------------------------------------------------------------------- |
 | 1            | [Task-1.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-1.c) |
 | 2            | [Task-2.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-2.c) |
+| 3            | [Task-3.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-3.c) |
+| 4            | [Task-4.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-4.c) |
+| 5            | [Task-5.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-5.c) |
 
 ### Задание 1. Ассемблерные вставки
 ```C++
