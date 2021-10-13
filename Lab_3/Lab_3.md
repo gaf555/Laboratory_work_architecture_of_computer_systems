@@ -22,5 +22,34 @@
 | 1            | [Task-1.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-1.c) |
 | 2            | [Task-2.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-2.c) |
 
+### Задание 1. Ассемблерные вставки
+```C++
+// z = (x + 79) / y
+asm
+(
+    "movl    %[x], %%eax\n"
+    "addl    $79, %%eax\n"
+    "movl    %[y], %%ecx\n"
+    "cltd\n"
+    "idivl   %%ecx\n"
+    "movl    %%eax, %[z]\n"
+    :[z]"=rm"(z)
+    :[x]"g"(x), [y]"g"(y), "[z]"(z)
+);
+```
+```C++
+// w = (x + 79) % y
+asm
+(
+    "movl   %[x], %%eax\n"
+    "addl   $79, %%eax\n"
+    "cltd\n"
+    "idivl  %[y]\n"
+    "movl   %%edx, %[w]\n"
+    :[w]"=rm"(w)
+    :[x]"g"(x), [y]"g"(y), "[w]"(w)
+);
+```
+
 ## Контрольные вопросы
 
