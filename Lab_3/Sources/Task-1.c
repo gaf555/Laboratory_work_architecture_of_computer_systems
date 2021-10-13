@@ -2,8 +2,7 @@
 
 int main() {
 
-    int x = 0, y = 0, w = 0;
-    double z = 0;
+    int x = 0, y = 1, z = 0, w = 0;
 
     printf("Enter x: ");
     scanf("%d", &x);
@@ -11,35 +10,38 @@ int main() {
     printf("Enter y: ");
     scanf("%d", &y);
 
-    // z = x + 79
-    asm("movl       -20(%rbp), %eax");
-    asm("addl       $79, %eax");
-    asm("pxor       %xmm0, %xmm0");
-    asm("cvtsi2sdl  %eax, %xmm0");
-    asm("movsd      %xmm0, -16(%rbp)");
+    // z = (x + 79) / y
+    asm
+    (
+        "movl    %[x], %%eax\n"
+        "addl    $79, %%eax\n"
+        "movl    %[y], %%ecx\n"
+        "cltd\n"
+        "idivl   %%ecx\n"
+        "movl    %%eax, %[z]\n"
+        :[z]"=rm"(z)
+        :[x]"g"(x), [y]"g"(y), "[z]"(z)
+    );
 
-    // w = z
-    asm("movsd      -16(%rbp), %xmm0");
-    asm("cvttsd2sil %xmm0, %eax");
-    asm("movl       %eax, -4(%rbp)");
+    // w = (x + 79) % y
+    asm
+    (
+        "movl   %[x], %%eax\n"
+        "addl   $79, %%eax\n"
+        "cltd\n"
+        "idivl  %[y]\n"
+        "movl   %%edx, %[w]\n"
+        :[w]"=rm"(w)
+        :[x]"g"(x), [y]"g"(y), "[w]"(w)
+    );
 
-    // z = z / y
-    asm("movl       -24(%rbp), %eax");
-    asm("pxor       %xmm1, %xmm1");
-    asm("cvtsi2sdl  %eax, %xmm1");
-    asm("movsd      -16(%rbp), %xmm0");
-    asm("divsd      %xmm1, %xmm0");
-    asm("movsd      %xmm0, -16(%rbp)");
 
-    // w = w % y;
-    asm("movl   -24(%rbp), %ecx");
-    asm("movl   -4(%rbp), %eax");
-    asm("cltd");
-    asm("idivl  %ecx");
-    asm("movl   %edx, -4(%rbp)");
-
+    printf("x = %d\n", x);
+    printf("y = %d\n", y);
+    printf("z = %d\n", z);
     printf("w = %d\n", w);
-    printf("z = %.2lf", z);
+
+    printf("Press <Enter> to continue...");
 
     return 0;
 }
