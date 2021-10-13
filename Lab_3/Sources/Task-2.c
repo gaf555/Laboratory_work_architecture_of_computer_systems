@@ -2,50 +2,41 @@
 
 int main() {
 
-    int x = 0, y = 1, w = 0;
-    double z = 0;
+    const int N = 10;
 
-    int* p = &x;
-    int* q = &y;
+    int mas[N];
+    int k = 0, x = 0;
+
+    for(int i=0;i<N;i++){
+
+        mas[i] = 0;
+        printf("%d ", mas[i]);
+    }
+    printf("\n");
+
+    printf("Enter k: ");
+    scanf("%d", &k);
 
     printf("Enter x: ");
     scanf("%d", &x);
 
-    printf("Enter y: ");
-    scanf("%d", &y);
+    // mas[k] = x
+    asm
+    (
+        "movl	-84(%rbp), %edx\n"
+        "movl	-88(%rbp), %ecx\n"
+        "movq	-80(%rbp), %rax\n"
+        "movslq	%edx, %rdx\n"
+        "movl	%ecx, (%rax,%rdx,4)\n"
+    );
 
-    // z = *p + 79
-    asm("movq       -24(%rbp), %rax");
-    asm("movl       (%rax), %eax");
-    asm("addl       $79, %eax");
-    asm("pxor       %xmm0, %xmm0");
-    asm("cvtsi2sdl  %eax, %xmm0");
-    asm("movsd      %xmm0, -16(%rbp)");
+    for(int i=0;i<N;i++){
 
-    // w = z
-    asm("movsd   -16(%rbp), %xmm0");
-    asm("cvttsd2sil      %xmm0, %eax");
-    asm("movl    %eax, -4(%rbp)");
+        printf("%d ", mas[i]);
+    }
+    printf("\n");
 
-    // z = z / *q
-    asm("movq       -32(%rbp), %rax");
-    asm("movl       (%rax), %eax");
-    asm("pxor       %xmm1, %xmm1");
-    asm("cvtsi2sdl  %eax, %xmm1");
-    asm("movsd      -16(%rbp), %xmm0");
-    asm("divsd      %xmm1, %xmm0");
-    asm("movsd      %xmm0, -16(%rbp)");
-
-    // w = w % *q;
-    asm("movq       -32(%rbp), %rax");
-    asm("movl       (%rax), %ecx");
-    asm("movl       -4(%rbp), %eax");
-    asm("cltd");
-    asm("idivl      %ecx");
-    asm("movl       %edx, -4(%rbp)");
-
-    printf("w = %d\n", w);
-    printf("z = %.2lf", z);
+    printf("Press <Enter> to continue...");
 
     return 0;
 }
