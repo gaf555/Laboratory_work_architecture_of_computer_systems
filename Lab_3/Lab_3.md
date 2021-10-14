@@ -55,7 +55,7 @@ asm
     "movl   %%edx, %[w]\n"
     :[w]"=rm"(w)
     :[x]"g"(x), [y]"g"(y), "[w]"(w)
-    : "cc", "%eax"
+    : "cc", "%eax", "%ecx"
 );
 ```
 
@@ -86,7 +86,7 @@ asm
     "movl   %%edx, %[w]\n"
     :[w]"=rm"(w)
     :[p]"r"(&x), [q]"r"(&y), "[w]"(w)
-    : "cc", "%eax"
+    : "cc", "%eax", "%ecx"
 );
 ```
 
