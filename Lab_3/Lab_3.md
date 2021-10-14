@@ -62,7 +62,41 @@ asm
 
 ### Задание 2. Ассемблерная вставка
 ```C++
-
+// z = (*p + 79) / *q
+asm
+(
+    "movq       (%rbp-24), %rax\n"
+    "movl       (%rax), %eax\n"
+    "addl       $79, %%eax\n"
+    "pxor       %xmm0, %xmm0\n"
+    "cvtsi2sdl  %eax, %xmm0\n"
+    "movsd      %xmm0, -16(%rbp)\n"
+    "movq       -32(%rbp), %rax\n"
+    "movl       (%rax), %eax\n"
+    "pxor       %xmm1, %xmm1\n"
+    "cvtsi2sdl  %eax, %xmm1\n"
+    "movsd      -16(%rbp), %xmm0\n"
+    "divsd      %xmm1, %xmm0\n"
+    "movsd      %xmm0, -16(%rbp)\n"
+);
+```
+```C++
+// w = (*p + 79) % *q
+asm
+(
+    "movq       -24(%rbp), %rax\n"
+    "movl       (%rax), %eax\n"
+    "addl       $79, %eax\n"
+    "pxor       %xmm0, %xmm0\n"
+    "cvtsi2sdl  %eax, %xmm0\n"
+    "movsd      %xmm0, -16(%rbp)\n"
+    "movq       -32(%rbp), %rax\n"
+    "movl       (%rax), %ecx\n"
+    "movl       -4(%rbp), %eax\n"
+    "cltd\n"
+    "idivl      %ecx\n"
+    "movl       %edx, -4(%rbp)\n"
+);
 ```
 
 ### Задание 3. Ассемблерная вставка
