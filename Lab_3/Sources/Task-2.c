@@ -4,45 +4,42 @@ int main() {
 
     int x = 0, y = 1, z = 0, w = 0;
 
-    int* p = &x;
-    int* q = &y;
-
     printf("Enter x: ");
     scanf("%d", &x);
 
     printf("Enter y: ");
     scanf("%d", &y);
 
-    // z = (*p + 79) / *q;
+    // p = &x
+    // q = &y
+
+    // z = (x + 79) / y
     asm
     (
-        "movq	-16(%rbp), %rax\n"
-        "movl	(%rax), %eax\n"
-        "leal	79(%rax), %ecx\n"
-        "movq	-24(%rbp), %rax\n"
-        "movl	(%rax), %r8d\n"
-        "movl	%ecx, %eax\n"
+        "movl    (%[p]), %%eax\n"
+        "addl    $79, %%eax\n"
+        "movl    (%[q]), %%ecx\n"
         "cltd\n"
-        "idivl	%r8d\n"
-        "movl	%eax, -4(%rbp)\n"
+        "idivl   %%ecx\n"
+        "movl    %%eax, %[z]\n"
+        :[z]"=rm"(z)
+        :[p]"r"(&x), [q]"r"(&y), "[z]"(z)
     );
 
-    // w = (*p + 79) % *q;
+    // w = (x + 79) % y
     asm
     (
-        "movq	-16(%rbp), %rax\n"
-        "movl	(%rax), %eax\n"
-        "leal	79(%rax), %edx\n"
-        "movq	-24(%rbp), %rax\n"
-        "movl	(%rax), %ecx\n"
-        "movl	%edx, %eax\n"
+        "movl   (%[p]), %%eax\n"
+        "addl   $79, %%eax\n"
         "cltd\n"
-        "idivl	%ecx\n"
-        "movl	%edx, -8(%rbp)\n"
+        "idivl  (%[q])\n"
+        "movl   %%edx, %[w]\n"
+        :[w]"=rm"(w)
+        :[p]"r"(&x), [q]"r"(&y), "[w]"(w)
     );
 
-    printf("w = %d\n", w);
-    printf("z = %d", z);
+    printf("z = %d\n", z);
+    printf("w = %d", w);
 
     return 0;
 }
