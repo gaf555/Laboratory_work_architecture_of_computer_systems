@@ -13,7 +13,7 @@ int main() {
     int* p = &x;
     int* q = &y;
 
-    // z = (x + 79) / y
+    // z = (*p + 79) / *q
     asm
     (
         "movq       (%rbp-24), %rax\n"
@@ -29,10 +29,9 @@ int main() {
         "movsd      -16(%rbp), %xmm0\n"
         "divsd      %xmm1, %xmm0\n"
         "movsd      %xmm0, -16(%rbp)\n"
-
     );
 
-    // w = (x + 79) % y
+    // w = (*p + 79) % *q
     asm
     (
         "movq       -24(%rbp), %rax\n"
@@ -47,7 +46,6 @@ int main() {
         "cltd\n"
         "idivl      %ecx\n"
         "movl       %edx, -4(%rbp)\n"
-
     );
 
 
@@ -59,4 +57,3 @@ int main() {
 
     return 0;
 }
-
