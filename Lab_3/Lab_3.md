@@ -62,7 +62,33 @@ asm
 
 ### Задание 2. Ассемблерная вставка
 ```C++
-
+// z = (x + 79) / y
+asm
+(
+    "movl    (%[p]), %%eax\n"
+    "addl    $79, %%eax\n"
+    "movl    (%[q]), %%ecx\n"
+    "cltd\n"
+    "idivl   %%ecx\n"
+    "movl    %%eax, %[z]\n"
+    :[z]"=rm"(z)
+    :[p]"r"(&x), [q]"r"(&y), "[z]"(z)
+    : "cc", "%eax", "%ecx"
+);
+```
+```C++
+// w = (x + 79) % y
+asm
+(
+    "movl   (%[p]), %%eax\n"
+    "addl   $79, %%eax\n"
+    "cltd\n"
+    "idivl  (%[q])\n"
+    "movl   %%edx, %[w]\n"
+    :[w]"=rm"(w)
+    :[p]"r"(&x), [q]"r"(&y), "[w]"(w)
+    : "cc", "%eax"
+);
 ```
 
 ### Задание 3. Ассемблерная вставка
