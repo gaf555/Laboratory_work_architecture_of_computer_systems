@@ -10,8 +10,8 @@ int main() {
     printf("Enter y: ");
     scanf("%d", &y);
 
-    // z = (x + 79) / y;
-    // w = (x + 79) % y;
+    // z = (*p + 79) / *q;
+    // w = (*p + 79) % *q;
 
     asm
     (
