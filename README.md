@@ -10,6 +10,10 @@
 6. [Работа с условными командами](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_6/Lab_6.md)
 7. [Использование структур и массивов](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_7/Lab_7.md)
 
+## Репозиторий gitlab
+
+[Открыть](https://gitlab.com/illinc/arch-cs)
+
 ## -
 
 ![изображение](https://user-images.githubusercontent.com/78896451/136544266-1a5e23d8-8be8-48d0-a36a-bde36289a14d.png)
