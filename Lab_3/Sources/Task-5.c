@@ -20,7 +20,7 @@ int main(){
     // mas[k] = x
     asm
     (
-        "movl	$0xFF, 3(%[mas], %q[k], 4)\n"
+        "movb	$0xFF, 3(%[mas], %q[k], 4)\n"
         :
         : [k]"g"(k), [mas]"r"(mas)
         : "cc", "memory"
