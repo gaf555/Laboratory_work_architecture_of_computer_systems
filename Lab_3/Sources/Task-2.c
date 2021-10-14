@@ -24,6 +24,7 @@ int main() {
         "movl    %%eax, %[z]\n"
         :[z]"=rm"(z)
         :[p]"r"(&x), [q]"r"(&y), "[z]"(z)
+        : "cc", "%eax", "%ecx"
     );
 
     // w = (x + 79) % y
@@ -36,6 +37,7 @@ int main() {
         "movl   %%edx, %[w]\n"
         :[w]"=rm"(w)
         :[p]"r"(&x), [q]"r"(&y), "[w]"(w)
+        : "cc", "%eax"
     );
 
     printf("z = %d\n", z);
