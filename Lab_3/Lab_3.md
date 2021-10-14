@@ -110,12 +110,10 @@ asm
 // mas[k] = x
 asm
 (
-    "movl	-84(%rbp), %edx\n"
-    "movl	-88(%rbp), %ecx\n"
-    "movq	-80(%rbp), %rax\n"
-    "movslq	%edx, %rdx\n"
-    "movl	%ecx, (%rax,%rdx,4)\n"
-    ::: "cc", "%edx", "%ecx", "%rax"
+    "movl	%[x], (%[mas], %q[k], 4)\n"
+    :
+    :[x]"g"(x), [k]"g"(k), [mas]"r"(mas)
+    : "cc", "memory"
 );
 ```
 
