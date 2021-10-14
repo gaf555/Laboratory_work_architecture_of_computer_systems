@@ -28,6 +28,7 @@ int main() {
             "movl	%[x], (%[mas], %q[k], 4)\n"
             :
             :[x]"g"(x), [k]"g"(k), [mas]"r"(mas)
+            : "cc", "memory"
         );
     }
 
