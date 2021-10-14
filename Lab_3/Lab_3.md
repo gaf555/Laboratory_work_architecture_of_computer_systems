@@ -93,16 +93,16 @@ asm
 ### Задание 3. Ассемблерная вставка
 ```C++
  asm(
-        "movl $79,%%eax\n"
-        "addl %2,%%eax\n"
-        "cdq\n"
-        "idiv %3\n"
-        "movl %%eax , %0\n"
-        "movl %%edx , %1"
-        :"+r"(w), "+r"(z)
-        : "r"(x), "r"(y)
-        : "cc","%eax" ,"%edx"
-    );
+  "movl $79,%%eax\n"
+  "addl %2,%%eax\n"
+  "cdq\n"
+  "idiv %3\n"
+  "movl %%eax , %0\n"
+  "movl %%edx , %1"
+  :"+r"(w), "+r"(z)
+  : "r"(x), "r"(y)
+  : "cc","%eax" ,"%edx"
+);
 ```
 
 ### Задание 4. Ассемблерная вставка
