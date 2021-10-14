@@ -10,38 +10,28 @@ int main() {
     printf("Enter y: ");
     scanf("%d", &y);
 
-    // p = &x
-    // q = &y
+    // z = (x + 79) / y;
+    // w = (x + 79) % y;
 
-    // z = (x + 79) / y
     asm
     (
-        "movl    (%[p]), %%eax\n"
-        "addl    $79, %%eax\n"
-        "movl    (%[q]), %%ecx\n"
-        "cltd\n"
-        "idivl   %%ecx\n"
-        "movl    %%eax, %[z]\n"
-        :[z]"=rm"(z)
-        :[p]"r"(&x), [q]"r"(&y), "[z]"(z)
-        : "cc", "%eax", "%ecx"
-    );
-
-    // w = (x + 79) % y
-    asm
-    (
-        "movl   (%[p]), %%eax\n"
-        "addl   $79, %%eax\n"
+        "addl   (%[p]), %[z]\n"
+        "addl   $79, %[z]\n"
+        "addl   %[z], %[w]\n"
+        "movl   %[z], %%eax\n"
         "cltd\n"
         "idivl  (%[q])\n"
+        "movl   %%eax, %[z]\n"
         "movl   %%edx, %[w]\n"
-        :[w]"=rm"(w)
-        :[p]"r"(&x), [q]"r"(&y), "[w]"(w)
-        : "cc", "%eax", "%ecx"
+        :[z]"=rm"(z), [w]"=rm"(w)
+        :[p]"g"(&x), [q]"g"(&y), "[z]"(z), "[w]"(w)
+        : "cc", "%eax", "%ecx", "%edx"
     );
 
     printf("z = %d\n", z);
-    printf("w = %d", w);
+    printf("w = %d\n", w);
+
+    printf("Press <Enter> to continue...");
 
     return 0;
 }
