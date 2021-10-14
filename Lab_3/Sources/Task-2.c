@@ -2,11 +2,7 @@
 
 int main() {
 
-    int x = 0, y = 1, w = 0;
-    double z = 0;
-
-    int* p = &x;
-    int* q = &y;
+    int x = 0, y = 1, z = 0, w = 0;
 
     printf("Enter x: ");
     scanf("%d", &x);
@@ -14,38 +10,53 @@ int main() {
     printf("Enter y: ");
     scanf("%d", &y);
 
-    // z = *p + 79
-    asm("movq       -24(%rbp), %rax");
-    asm("movl       (%rax), %eax");
-    asm("addl       $79, %eax");
-    asm("pxor       %xmm0, %xmm0");
-    asm("cvtsi2sdl  %eax, %xmm0");
-    asm("movsd      %xmm0, -16(%rbp)");
+    int* p = &x;
+    int* q = &y;
 
-    // w = z
-    asm("movsd   -16(%rbp), %xmm0");
-    asm("cvttsd2sil      %xmm0, %eax");
-    asm("movl    %eax, -4(%rbp)");
+    // z = (x + 79) / y
+    asm
+    (
+        "movq       (%rbp-24), %rax\n"
+        "movl       (%rax), %eax\n"
+        "addl       $79, %%eax\n"
+        "pxor       %xmm0, %xmm0\n"
+        "cvtsi2sdl  %eax, %xmm0\n"
+        "movsd      %xmm0, -16(%rbp)\n"
+        "movq       -32(%rbp), %rax\n"
+        "movl       (%rax), %eax\n"
+        "pxor       %xmm1, %xmm1\n"
+        "cvtsi2sdl  %eax, %xmm1\n"
+        "movsd      -16(%rbp), %xmm0\n"
+        "divsd      %xmm1, %xmm0\n"
+        "movsd      %xmm0, -16(%rbp)\n"
 
-    // z = z / *q
-    asm("movq       -32(%rbp), %rax");
-    asm("movl       (%rax), %eax");
-    asm("pxor       %xmm1, %xmm1");
-    asm("cvtsi2sdl  %eax, %xmm1");
-    asm("movsd      -16(%rbp), %xmm0");
-    asm("divsd      %xmm1, %xmm0");
-    asm("movsd      %xmm0, -16(%rbp)");
+    );
 
-    // w = w % *q;
-    asm("movq       -32(%rbp), %rax");
-    asm("movl       (%rax), %ecx");
-    asm("movl       -4(%rbp), %eax");
-    asm("cltd");
-    asm("idivl      %ecx");
-    asm("movl       %edx, -4(%rbp)");
+    // w = (x + 79) % y
+    asm
+    (
+        "movq       -24(%rbp), %rax\n"
+        "movl       (%rax), %eax\n"
+        "addl       $79, %eax\n"
+        "pxor       %xmm0, %xmm0\n"
+        "cvtsi2sdl  %eax, %xmm0\n"
+        "movsd      %xmm0, -16(%rbp)\n"
+        "movq       -32(%rbp), %rax\n"
+        "movl       (%rax), %ecx\n"
+        "movl       -4(%rbp), %eax\n"
+        "cltd\n"
+        "idivl      %ecx\n"
+        "movl       %edx, -4(%rbp)\n"
 
+    );
+
+
+
+    printf("z = %d\n", z);
     printf("w = %d\n", w);
-    printf("z = %.2lf", z);
+
+    printf("Press <Enter> to continue...");
 
     return 0;
 }
+
