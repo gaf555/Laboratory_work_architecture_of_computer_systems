@@ -52,7 +52,7 @@ int main() {
 
 
 
-    printf("z = %d\n", z);
+    printf("z = %.2lf\n", z);
     printf("w = %d\n", w);
 
     printf("Press <Enter> to continue...");
