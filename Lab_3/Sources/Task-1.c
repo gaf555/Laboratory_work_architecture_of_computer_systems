@@ -10,31 +10,22 @@ int main() {
     printf("Enter y: ");
     scanf("%d", &y);
 
-    // z = (x + 79) / y
-    asm
-    (
-        "movl    %[x], %%eax\n"
-        "addl    $79, %%eax\n"
-        "movl    %[y], %%ecx\n"
-        "cltd\n"
-        "idivl   %%ecx\n"
-        "movl    %%eax, %[z]\n"
-        :[z]"=rm"(z)
-        :[x]"g"(x), [y]"g"(y), "[z]"(z)
-        : "cc", "%eax", "%ecx"
-    );
+    // z = (x + 79) / y;
+    // w = (x + 79) % y;
 
-    // w = (x + 79) % y
     asm
     (
-        "movl   %[x], %%eax\n"
-        "addl   $79, %%eax\n"
+        "addl   %[x], %[z]\n"
+        "addl   $79, %[z]\n"
+        "addl   %[z], %[w]\n"
+        "movl   %[z], %%eax\n"
         "cltd\n"
         "idivl  %[y]\n"
+        "movl   %%eax, %[z]\n"
         "movl   %%edx, %[w]\n"
-        :[w]"=rm"(w)
-        :[x]"g"(x), [y]"g"(y), "[w]"(w)
-        : "cc", "%eax", "%ecx"
+        :[z]"=rm"(z), [w]"=rm"(w)
+        :[x]"g"(x), [y]"g"(y), "[z]"(z), "[w]"(w)
+        : "cc", "%eax", "%ecx", "%edx"
     );
 
     printf("z = %d\n", z);
