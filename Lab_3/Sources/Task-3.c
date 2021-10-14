@@ -18,6 +18,9 @@ int main()
      : "r"(x), "r"(y)
      : "cc","%eax" ,"%edx"
    );
+    
+    printf("w = %d\n", w);
+    printf("z = %d\n", z);
 
     return 0;
 }
