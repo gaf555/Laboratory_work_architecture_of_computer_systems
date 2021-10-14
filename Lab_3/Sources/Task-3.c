@@ -2,22 +2,22 @@
 
 int main()
 {
-	int x, y, w, z, trash;
+    int x, y, w, z;
 
-	scanf("%d", &x);
-	scanf("%d", &y);
+    scanf("%d", &x);
+    scanf("%d", &y);
 
+    asm(
+     "movl $79,%%eax\n"
+     "addl %2,%%eax\n"
+     "cdq\n"
+     "idiv %3\n"
+     "movl %%eax , %0\n"
+     "movl %%edx , %1"
+     :"+r"(w), "+r"(z)
+     : "r"(x), "r"(y)
+     : "cc","%eax" ,"%edx"
+   );
 
-	asm(
-		"movl $79,%%eax\n"
-		"addl %2,%%eax\n"
-		"idiv %3\n"
-		"movl %%al , %0\n"
-		"movl %%ah , %1"
-		:"+r"(w), "+r"(z)
-		: "r"(x), "r"(y)
-		: "cc"
-	);
-
-	return 0;
+    return 0;
 }
