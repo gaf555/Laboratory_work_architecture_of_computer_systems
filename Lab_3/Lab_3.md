@@ -38,6 +38,8 @@ asm
     "movl    %%eax, %[z]\n"
     :[z]"=rm"(z)
     :[x]"g"(x), [y]"g"(y), "[z]"(z)
+    : "cc", "%eax", "%ecx"
+
 );
 ```
 ```C++
@@ -51,6 +53,7 @@ asm
     "movl   %%edx, %[w]\n"
     :[w]"=rm"(w)
     :[x]"g"(x), [y]"g"(y), "[w]"(w)
+    : "cc"
 );
 ```
 
@@ -69,7 +72,7 @@ asm(
 	"movl %%ah , %1"
 	:"+r"(w), "+r"(z)
 	: "r"(x), "r"(y)
-	: "cc"
+	: "cc", "%eax"
 );
 ```
 
@@ -83,6 +86,7 @@ asm
     "movq	-80(%rbp), %rax\n"
     "movslq	%edx, %rdx\n"
     "movl	%ecx, (%rax,%rdx,4)\n"
+    ::: "cc", "%edx", "%ecx", "%rax"
 );
 ```
 
