@@ -4,56 +4,45 @@ int main() {
 
     int x = 0, y = 1, z = 0, w = 0;
 
+    int* p = &x;
+    int* q = &y;
+
     printf("Enter x: ");
     scanf("%d", &x);
 
     printf("Enter y: ");
     scanf("%d", &y);
 
-    int* p = &x;
-    int* q = &y;
-
-    // z = (*p + 79) / *q
+    // z = (*p + 79) / *q;
     asm
     (
-        "movq       (%rbp-24), %rax\n"
-        "movl       (%rax), %eax\n"
-        "addl       $79, %%eax\n"
-        "pxor       %xmm0, %xmm0\n"
-        "cvtsi2sdl  %eax, %xmm0\n"
-        "movsd      %xmm0, -16(%rbp)\n"
-        "movq       -32(%rbp), %rax\n"
-        "movl       (%rax), %eax\n"
-        "pxor       %xmm1, %xmm1\n"
-        "cvtsi2sdl  %eax, %xmm1\n"
-        "movsd      -16(%rbp), %xmm0\n"
-        "divsd      %xmm1, %xmm0\n"
-        "movsd      %xmm0, -16(%rbp)\n"
-    );
-
-    // w = (*p + 79) % *q
-    asm
-    (
-        "movq       -24(%rbp), %rax\n"
-        "movl       (%rax), %eax\n"
-        "addl       $79, %eax\n"
-        "pxor       %xmm0, %xmm0\n"
-        "cvtsi2sdl  %eax, %xmm0\n"
-        "movsd      %xmm0, -16(%rbp)\n"
-        "movq       -32(%rbp), %rax\n"
-        "movl       (%rax), %ecx\n"
-        "movl       -4(%rbp), %eax\n"
+        "movq	-16(%rbp), %rax\n"
+        "movl	(%rax), %eax\n"
+        "leal	79(%rax), %ecx\n"
+        "movq	-24(%rbp), %rax\n"
+        "movl	(%rax), %r8d\n"
+        "movl	%ecx, %eax\n"
         "cltd\n"
-        "idivl      %ecx\n"
-        "movl       %edx, -4(%rbp)\n"
+        "idivl	%r8d\n"
+        "movl	%eax, -4(%rbp)\n"
     );
 
+    // w = (*p + 79) % *q;
+    asm
+    (
+        "movq	-16(%rbp), %rax\n"
+        "movl	(%rax), %eax\n"
+        "leal	79(%rax), %edx\n"
+        "movq	-24(%rbp), %rax\n"
+        "movl	(%rax), %ecx\n"
+        "movl	%edx, %eax\n"
+        "cltd\n"
+        "idivl	%ecx\n"
+        "movl	%edx, -8(%rbp)\n"
+    );
 
-
-    printf("z = %.2lf\n", z);
     printf("w = %d\n", w);
-
-    printf("Press <Enter> to continue...");
+    printf("z = %d", z);
 
     return 0;
 }
