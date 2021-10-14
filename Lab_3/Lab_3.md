@@ -28,34 +28,21 @@
 | 4            | [Task-4.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-4.c) |
 | 5            | [Task-5.c](https://github.com/konsilerinos/ACS-labs/blob/main/Lab_3/Sources/Task-5.c) |
 
-### Задание 1. Ассемблерные вставки
+### Задание 1. Ассемблерная вставка
 ```C++
-// z = (x + 79) / y
 asm
 (
-    "movl    %[x], %%eax\n"
-    "addl    $79, %%eax\n"
-    "movl    %[y], %%ecx\n"
-    "cltd\n"
-    "idivl   %%ecx\n"
-    "movl    %%eax, %[z]\n"
-    :[z]"=rm"(z)
-    :[x]"g"(x), [y]"g"(y), "[z]"(z)
-    : "cc", "%eax", "%ecx"
-);
-```
-```C++
-// w = (x + 79) % y
-asm
-(
-    "movl   %[x], %%eax\n"
-    "addl   $79, %%eax\n"
+    "addl   %[x], %[z]\n"
+    "addl   $79, %[z]\n"
+    "addl   %[z], %[w]\n"
+    "movl   %[z], %%eax\n"
     "cltd\n"
     "idivl  %[y]\n"
+    "movl   %%eax, %[z]\n"
     "movl   %%edx, %[w]\n"
-    :[w]"=rm"(w)
-    :[x]"g"(x), [y]"g"(y), "[w]"(w)
-    : "cc", "%eax", "%ecx"
+    :[z]"=rm"(z), [w]"=rm"(w)
+    :[x]"g"(x), [y]"g"(y), "[z]"(z), "[w]"(w)
+    : "cc", "%eax", "%ecx", "%edx"
 );
 ```
 
