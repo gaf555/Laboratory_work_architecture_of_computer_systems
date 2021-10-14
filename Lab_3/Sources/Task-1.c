@@ -34,7 +34,7 @@ int main() {
         "movl   %%edx, %[w]\n"
         :[w]"=rm"(w)
         :[x]"g"(x), [y]"g"(y), "[w]"(w)
-        : "cc", "%eax"
+        : "cc", "%eax", "%ecx"
     );
 
     printf("z = %d\n", z);
