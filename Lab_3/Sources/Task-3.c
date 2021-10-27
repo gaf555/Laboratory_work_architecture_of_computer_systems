@@ -8,15 +8,14 @@ int main()
     scanf("%d", &y);
 
     asm(
-     "movl $79,%%eax\n"
-     "addl %2,%%eax\n"
+     "addl $79,%2\n"
      "cdq\n"
      "idiv %3\n"
-     "movl %%eax , %0\n"
-     "movl %%edx , %1"
+     "movl %2 , %0\n"
+     "movl %3 , %1"
      :"+r"(w), "+r"(z)
-     : "r"(x), "r"(y)
-     : "cc","%eax" ,"%edx"
+     : "a"(x), "d"(y)
+     : "cc", "%ecx" , "%esi"
    );
     
     printf("w = %d\n", w);
